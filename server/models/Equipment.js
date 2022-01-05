@@ -7,7 +7,6 @@ const equipmentSchema = new Schema({
     description: { type: String, required: true },
     serialNumber: { type: String, required: true },
     image: { type: String, required: true },
-    type: { type: String, required: true },
     location: { type: String, required: true },
     lost: {type: Boolean, required: true }
 });

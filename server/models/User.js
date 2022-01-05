@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
 // import schema from Equipment.js
-const EquipmentSchema = require('./Equipment');
+const equipmentSchema = require('./Equipment');
 
 const userSchema =  new Schema(
     {
@@ -52,10 +52,9 @@ const userSchema =  new Schema(
     return bcrypt.compare(password, this.password);
   };
   
-  // when we query a user, we'll also get another field called `bookCount` with the number of saved books we have
-  userSchema.virtual('containsLost').get(function () {
-    this.savedEquipment.forEach
-    return;
+ 
+  userSchema.virtual('hasLost').get(function () {
+    this.savedEquipment.forEach(instrument => {if(instrument.lost){return true}})
   });
   
   const User = model('User', userSchema);
