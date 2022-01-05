@@ -1,8 +1,11 @@
 import './App.css';
 import React from 'react';
-import Navbar from './components/Navbar';
-
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import EditEquipment from './pages/EditEquipment';
+import SavedEquipment from './pages/SavedEquipment';
+import LostEquipment from './pages/LostEquipment';
+
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 
@@ -31,6 +34,12 @@ function App() {
       <Router>
         <>
           <Navbar />
+          <Switch>
+            <Route exact path='/' component={LostEquipment} />
+            <Route exact path='/saved' component={SavedEquipment} />
+            <Route exact path='/edit' component={EditEquipment} />
+            <Route render={() => <h1 className='display-2'>Wrong page!</h1>} />
+          </Switch>
 
         </>
       </Router>
