@@ -54,7 +54,9 @@ const userSchema =  new Schema(
   
  
   userSchema.virtual('hasLost').get(function () {
-    this.savedEquipment.forEach(instrument => {if(instrument.lost){return true}})
+    let check = false
+    this.savedEquipment.forEach(instrument => {if(instrument.lost){check = true}})
+    return check;
   });
   
   const User = model('User', userSchema);
