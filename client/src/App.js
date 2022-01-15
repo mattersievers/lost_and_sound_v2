@@ -40,7 +40,6 @@ function App() {
             <Route exact path='/edit' component={EditEquipment} />
             <Route render={() => <h1 className='display-2'>Wrong page!</h1>} />
           </Switch>
-
         </>
       </Router>
     </ApolloProvider>
