@@ -20,6 +20,7 @@ const LostEquipment = () => {
             </h2>
             <div className="align-self-center userEquipment">
                 {userData.users.map((user) => {
+                    let link = `mailto: ${user.email}`
                     if(user.hasLost) {
                         return (
                             <>
@@ -28,15 +29,21 @@ const LostEquipment = () => {
                                 </div>
         
                                 {user.savedEquipment.map((item) => {
+                                    
+                                    console.log(link);
                                     if (item.lost) {
                                         return(
-                                            <ul>
-                                                <li>Category: `{item.category}`</li>
-                                                <li>Brand: `{item.brand}`</li>
-                                                <li>Model: `{item.model}`</li>
-                                                <li>Description: `{item.description}`</li>
-                                                <li>Serial Number:  `{item.serialNumber}`</li>
-                                        </ul>
+                                            <>
+                                                <ul>
+                                                    <li>Category: `{item.category}`</li>
+                                                    <li>Brand: `{item.brand}`</li>
+                                                    <li>Model: `{item.model}`</li>
+                                                    <li>Description: `{item.description}`</li>
+                                                    <li>Serial Number:  `{item.serialNumber}`</li>
+                                                </ul>
+                                                <a href={link}>Contact the owner.</a>
+                                            </>    
+
                                         )
                                     }
                                 })}

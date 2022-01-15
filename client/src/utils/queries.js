@@ -25,6 +25,7 @@ export const GET_EQUIPMENT = gql`
     users {
         firstName
         lastName
+        email
         hasLost
         savedEquipment{
             _id
