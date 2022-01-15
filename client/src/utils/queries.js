@@ -13,7 +13,6 @@ export const GET_ME = gql`
             model
             description
             serialNumber
-            image
             location
             lost
         }    
@@ -34,7 +33,6 @@ export const GET_EQUIPMENT = gql`
             model
             description
             serialNumber
-            image
             location
             lost
         }    
@@ -54,7 +52,6 @@ export const GET_MY_EQUIPMENT = gql`
             model
             description
             serialNumber
-            image
             location
             lost
         }    

@@ -19,7 +19,7 @@ const LostEquipment = () => {
                 Report and recover lost or stolen musical instruments and accessories.
             </h2>
             <div className="align-self-center userEquipment">
-                {userData.users.map((user) => {
+                {userData.users.forEach((user) => {
                     let link = `mailto: ${user.email}`
                     if(user.hasLost) {
                         return (
@@ -28,7 +28,7 @@ const LostEquipment = () => {
                                     {user.firstName} {user.lastName}
                                 </div>
         
-                                {user.savedEquipment.map((item) => {
+                                {user.savedEquipment.forEach((item) => {
                                     
                                     console.log(link);
                                     if (item.lost) {
