@@ -1,11 +1,34 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
+/* Document styles */
+.mainContent{
+  min-height: 100vh;
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
 
-/* Document stylings */
-
-/* Navbar styling */
+/* Navbar styles */
 .websiteTitle{
   font-size: 7vmin;
   font-family: 'Lobster', cursive;}
 
-/**/
+/* Homepage Styles */
+.lostEquipmentContent{
+  background-image: url(./assets/pics/microphone.jpg);
+}
+
+/* Saved Equipment Styling */
+.savedEquipmentContent{
+  background-image: url(./assets/pics/amp\ knobs.jpg);
+}
+/* Add Equipment Styling */
+.editEquipmentContent{
+  background-image: url(./assets/pics/guitars.jpg);
+}
+/*Sign Up and Log In Modal styles*/
+.loginSignupBtn{
+  margin: 10px 0;
+}
