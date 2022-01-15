@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import EditEquipment from './pages/EditEquipment';
 import SavedEquipment from './pages/SavedEquipment';
 import LostEquipment from './pages/LostEquipment';
+import Footer from './components/Footer'
 
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
@@ -40,6 +41,7 @@ function App() {
             <Route exact path='/edit' component={EditEquipment} />
             <Route render={() => <h1 className='display-2'>Wrong page!</h1>} />
           </Switch>
+          <Footer />
         </>
       </Router>
     </ApolloProvider>
