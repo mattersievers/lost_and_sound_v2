@@ -14,12 +14,12 @@ const AppNavbar = () => {
     <>
       <Navbar bg='dark' variant='dark' expand='lg'>
         <Container fluid>
-          <Navbar.Brand as={Link} to='/'>
+          <Navbar.Brand as={Link} to='/' className='websiteTitle'>
             Lost And Sound
           </Navbar.Brand>
           <Navbar.Toggle aria-controls='navbar' />
           <Navbar.Collapse id='navbar'>
-            <Nav className='ml-auto'>
+            <Nav className='ms-auto'>
               {/* if user is logged in show saved books and logout */}
               {Auth.loggedIn() ? (
                 <>
