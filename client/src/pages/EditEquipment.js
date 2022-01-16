@@ -124,7 +124,7 @@ const EditEquipment = () => {
                   <input name="image" id="image" onChange={handleInputChange}/>
 
                   <label htmlFor="location">Location: </label>
-                <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false} style={{height: "50vh", width:"50vw"}}>
+                <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false} style={{height: "50vh", width:"35vw"}}>
                     <TileLayer
                         attribution='Open Street Maps'
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
