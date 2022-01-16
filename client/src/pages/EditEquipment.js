@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef, useMemo, useCallback } from "react"
 import { SAVE_EQUIPMENT } from '../utils/mutations';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import { useMutation } from "@apollo/client";
+import { CloudinaryContext, Transformation, Image } from 'cloudinary-react';
 
 const EditEquipment = () => {
         // Handles form data
@@ -100,6 +101,14 @@ const EditEquipment = () => {
             );
           };
 
+
+          function uploadWidget() {
+            window.cloudinary.openUploadWidget({ cloud_name: 'dgeknrish', upload_preset: 'LostAndSoundPics', tags:['musical equipment']},
+                function(error, result) {
+                    console.log(result);
+                });
+          };
+
     return(
         <div className="editEquipmentContent mainContent">
             <h2>Register Equipment</h2>
@@ -120,17 +129,24 @@ const EditEquipment = () => {
                   <label htmlFor="serialNumber">Serial Number: </label>
                   <input name="serialNumber" id="serialNumber" onChange={handleInputChange}/>
 
-                  <label htmlFor="image">Image: </label> 
-                  <input name="image" id="image" onChange={handleInputChange}/>
+                  <label htmlFor="image">Image: </label>
+                  <CloudinaryContext cloudName="dgeknrish">
+                    <Image publicId="sample">
+                        <Transformation width="200" crop="scale" angle="10"/>
+                    </Image>
+                  </CloudinaryContext> 
+                  <button onClick={uploadWidget.bind(this)} className="upload-button">
+                    Upload Image
+                  </button>
 
                   <label htmlFor="location">Location: </label>
-                <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false} style={{height: "50vh", width:"35vw"}}>
-                    <TileLayer
-                        attribution='Open Street Maps'
-                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                    />
-                    <LocationMarker />  
-                </MapContainer>
+                  <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false} style={{height: "50vh", width:"35vw"}}>
+                      <TileLayer
+                          attribution='Open Street Maps'
+                          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                      />
+                      <LocationMarker />  
+                  </MapContainer>
                     
                 
                   <label htmlFor="lost">Is the equipment lost? </label>
