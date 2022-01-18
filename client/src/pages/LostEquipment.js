@@ -1,6 +1,8 @@
 import React from "react";
 import { useQuery } from '@apollo/client';
 import { GET_EQUIPMENT } from '../utils/queries';
+import { CloudinaryContext, Transformation, Image } from 'cloudinary-react';
+
 
 
 const LostEquipment = () => {
@@ -34,11 +36,22 @@ const LostEquipment = () => {
                                         return(
                                             <div key={j}>
                                                 <ul>
-                                                    <li>Category: `{item.category}`</li>
-                                                    <li>Brand: `{item.brand}`</li>
-                                                    <li>Model: `{item.model}`</li>
-                                                    <li>Description: `{item.description}`</li>
-                                                    <li>Serial Number:  `{item.serialNumber}`</li>
+                                                    <li>
+                                                    {item.image.map((singleImage, j) => {
+                                                        return (
+                                                            <CloudinaryContext cloudName="dgeknrish" key={j}>
+                                                                <Image publicId={singleImage}>
+                                                                <Transformation width="200" crop="scale"/>
+                                                                </Image>
+                                                            </CloudinaryContext> 
+                                                        )
+                                                    })}
+                                                    </li>
+                                                    <li>Category: {item.category}</li>
+                                                    <li>Brand: {item.brand}</li>
+                                                    <li>Model: {item.model}</li>
+                                                    <li>Description: {item.description}</li>
+                                                    <li>Serial Number:  {item.serialNumber}</li>
                                                 </ul>
                                                 <a href={link}>Contact the owner.</a>
                                             </div>    

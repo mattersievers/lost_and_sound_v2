@@ -113,7 +113,9 @@ const EditEquipment = () => {
                     }
                     //widget is closed and image array is updated
                     if (result.event === "close"){
-                      tempArray.concat(equipmentFormData.image);
+                      console.log('before ',tempArray, equipmentFormData.image)
+                      tempArray = tempArray.concat(equipmentFormData.image);
+                      console.log('after ', tempArray)
                       setEquipmentFormData({...equipmentFormData, image: tempArray})
                     }
                 });
@@ -145,7 +147,7 @@ const EditEquipment = () => {
                       return (
                       <CloudinaryContext cloudName="dgeknrish" key={i}>
                         <Image publicId={singleImage}>
-                          <Transformation width="200" crop="scale" angle="10"/>
+                          <Transformation width="200" crop="scale" />
                         </Image>
                       </CloudinaryContext> 
                       )
