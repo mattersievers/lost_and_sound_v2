@@ -11,7 +11,7 @@ const typeDefs = gql`
         model: String
         description: String
         serialNumber: String
-        image: String
+        image: [String]
         location: String
         lost: Boolean
     }
@@ -23,7 +23,7 @@ const typeDefs = gql`
         model: String
         description: String
         serialNumber: String
-        image: String
+        image: [String]
         location: String
         lost: Boolean
     }
@@ -35,7 +35,7 @@ const typeDefs = gql`
         model: String
         description: String
         serialNumber: String
-        image: String
+        image: [String]
         location: String
         lost: Boolean
     }

@@ -19,21 +19,20 @@ const LostEquipment = () => {
                 Report and recover lost or stolen musical instruments and accessories.
             </h2>
             <div className="align-self-center userEquipment">
-                {userData.users.forEach((user) => {
+                {userData.users.map((user, i) => {
                     let link = `mailto: ${user.email}`
                     if(user.hasLost) {
                         return (
-                            <>
+                            <div key={i}>
                                 <div className="userName">
                                     {user.firstName} {user.lastName}
                                 </div>
         
-                                {user.savedEquipment.forEach((item) => {
+                                {user.savedEquipment.map((item, j) => {
                                     
-                                    console.log(link);
                                     if (item.lost) {
                                         return(
-                                            <>
+                                            <div key={j}>
                                                 <ul>
                                                     <li>Category: `{item.category}`</li>
                                                     <li>Brand: `{item.brand}`</li>
@@ -42,12 +41,12 @@ const LostEquipment = () => {
                                                     <li>Serial Number:  `{item.serialNumber}`</li>
                                                 </ul>
                                                 <a href={link}>Contact the owner.</a>
-                                            </>    
+                                            </div>    
 
                                         )
                                     }
                                 })}
-                            </>
+                            </div>
                         )
                     }
                     

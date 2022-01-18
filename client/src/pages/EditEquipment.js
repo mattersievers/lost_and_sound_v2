@@ -6,15 +6,15 @@ import { CloudinaryContext, Transformation, Image } from 'cloudinary-react';
 
 const EditEquipment = () => {
         // Handles form data
-        const [equipmentFormData, setEquipmentFormData] = useState({category: '', brand: '', model: '', description:'', serialNumber:'', image: '', location: '', lost: false });
+        const [equipmentFormData, setEquipmentFormData] = useState({category: '', brand: '', model: '', description:'', serialNumber:'', image: [], location: '', lost: false });
         const [saveEquipment] = useMutation(SAVE_EQUIPMENT);
         const [showAlert, setShowAlert] = useState(false);
         const [position, setPosition] = useState(null);
     
         useEffect(() => {
-          console.log(equipmentFormData)},
+          },
           [equipmentFormData]);
-          
+          console.log(equipmentFormData);
         
         const handleInputChange = (event) => {
           const { name, value } = event.target;
@@ -23,15 +23,16 @@ const EditEquipment = () => {
           } else if (name === "lost" && value === "false"){
             setEquipmentFormData({...equipmentFormData, lost: false})
           } else {
-            setEquipmentFormData({ ...equipmentFormData, [name]: value, location: position.toString()});
+            setEquipmentFormData({ ...equipmentFormData, [name]: value});
           }
-          console.log(equipmentFormData)
-    
         };
     
         const handleFormSubmit= async(event)=>{
             event.preventDefault();
-    
+            setEquipmentFormData({ ...equipmentFormData, location: position.toString()});
+
+            console.log("submitted: ", equipmentFormData)
+
             const form = event.currentTarget;
             if (form.checkValidity() === false) {
               event.preventDefault();
@@ -49,13 +50,12 @@ const EditEquipment = () => {
               console.error(err);
               setShowAlert(true);
             }
-            setEquipmentFormData({category: '', brand: '', model: '', description:'', serialNumber:'', image: '', location: '', lost: false });
+            setEquipmentFormData({category: '', brand: '', model: '', description:'', serialNumber:'', image: [], location: '', lost: false });
             document.getElementById("category").value = '';
             document.getElementById("brand").value = '';
             document.getElementById("model").value = '';
             document.getElementById("description").value = '';
             document.getElementById("serialNumber").value = '';
-            document.getElementById("image").value = '';
         };
     
         // gets location of user and implements a draggable icon on the map
@@ -87,7 +87,7 @@ const EditEquipment = () => {
               const toggleDraggable = useCallback(() => {
                 setDraggable((d) => !d)
               }, [])
-           
+
             return position === null ? null : (
               <Marker position={position} draggable={draggable} eventHandlers={eventHandlers} ref={markerRef}>
                 <Popup >
@@ -101,11 +101,21 @@ const EditEquipment = () => {
             );
           };
 
-
+          //widget functionality
           function uploadWidget() {
+            let tempArray = [];
             window.cloudinary.openUploadWidget({ cloud_name: 'dgeknrish', upload_preset: 'LostAndSoundPics', tags:['musical equipment']},
-                function(error, result) {
-                    console.log(result);
+              
+              function(error, result) {
+                    //single image upload is successful
+                    if(result.event === "success")  {
+                     tempArray.push(result.info.public_id)
+                    }
+                    //widget is closed and image array is updated
+                    if (result.event === "close"){
+                      tempArray.concat(equipmentFormData.image);
+                      setEquipmentFormData({...equipmentFormData, image: tempArray})
+                    }
                 });
           };
 
@@ -130,11 +140,16 @@ const EditEquipment = () => {
                   <input name="serialNumber" id="serialNumber" onChange={handleInputChange}/>
 
                   <label htmlFor="image">Image: </label>
-                  <CloudinaryContext cloudName="dgeknrish">
-                    <Image publicId="sample">
-                        <Transformation width="200" crop="scale" angle="10"/>
-                    </Image>
-                  </CloudinaryContext> 
+                  
+                    {equipmentFormData.image.map((singleImage, i) => {
+                      return (
+                      <CloudinaryContext cloudName="dgeknrish" key={i}>
+                        <Image publicId={singleImage}>
+                          <Transformation width="200" crop="scale" angle="10"/>
+                        </Image>
+                      </CloudinaryContext> 
+                      )
+                    })}
                   <button onClick={uploadWidget.bind(this)} className="upload-button">
                     Upload Image
                   </button>

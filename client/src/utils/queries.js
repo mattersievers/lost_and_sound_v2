@@ -35,6 +35,7 @@ export const GET_EQUIPMENT = gql`
             serialNumber
             location
             lost
+            image
         }    
     }
 }`;
@@ -54,6 +55,7 @@ export const GET_MY_EQUIPMENT = gql`
             serialNumber
             location
             lost
+            image
         }    
     }
 }`;

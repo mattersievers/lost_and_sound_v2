@@ -1,6 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
 /* Document styles */
+:root{
+--rich-black-fogra-29: #0d1f2dff;
+--dark-electric-blue: #546a7bff;
+--manatee: #9ea3b0ff;
+--coyote-brown: #7f6041ff;
+--desert-sand: #e4c3adff;
+}
+
 .mainContent{
   min-height: 100vh;
   height: 100%;
