@@ -25,7 +25,7 @@
   border-radius: 15px;
   border: 1px solid var(--dark-electric-blue);
   width: 50vmin;
-  margin: 2vmin;
+  margin: 2vw;
 }
 
 /* Navbar styles */
@@ -63,22 +63,22 @@
   padding: 1vw 5vw;
 }
 
-.lostContainer h2{
+.lostContainer h2, h1{
   font-size: 2.5vw;  
   text-shadow: -2px 1px var(--dark-electric-blue);
 }
 
 .lostOwnerInfo{
-  font-size: 3.5vmin;
+  font-size: 2.5vw;
   background-color: rgb(13, 31, 45, 0.3);
   color: white;
   border: 3px double var(--manatee) ;
   border-radius: 15px 50px;
-  margin: 3vmin;
+  margin: 3vw;
 }
 
 .lostOwnerInfo a{
-  font-size: 2.5vmin;
+  font-size: 1.5vw;
   text-decoration: none;
   color: var(--desert-sand);
   text-shadow: 2px 2px var(--coyote-brown);
@@ -94,28 +94,31 @@
 }
 
 .lostItemInfo{
-  margin: 2.5vmin;
+  margin: 2.5vw;
   border: 2px solid var(--manatee);
   border-radius: 15px 50px;
   background-color: rgba(84, 106, 123, 0.3);
 }
 
 .lostItemList{
- padding: 1vmin;
+ padding: 1vw;
 }
 
 .lostItemList li{
   color: var(--manatee);
-  margin: 2vmin;
+  margin: 1vw;
   list-style: none;
-  font-size: 2vmin;
-  text-shadow: 1px 1px var(--rich-black-fogra-29);  
+  font-size: 1vw;
+  text-shadow: 1px 1px var(--rich-black-fogra-29);
 }
 
 /* Saved Equipment Styling */
 .savedEquipmentContent{
   background-image: url(./assets/pics/amp\ knobs.jpg);
 }
+/* Saved Equipment styling reuses table styling from lostContainer and lostItemInfo and list styling from lostItemList */
+
+
 /* Add Equipment Styling */
 .editEquipmentContent{
   background-image: url(./assets/pics/guitars.jpg);

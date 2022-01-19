@@ -24,7 +24,7 @@ const LostEquipment = () => {
             </div> 
             <div className="lostContainer card align-items-center">
                 <h2>Missing Equipment:</h2>
-                <div className="userEquipment">
+                <div>
                     {userData.users.map((user, i) => {
                         let link = `mailto: ${user.email}`
                         if(user.hasLost) {
