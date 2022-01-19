@@ -27,19 +27,23 @@ function Footer() {
     }, [data]);
    
     return(
-        <form onSubmit={submitDonation}>
+        <form onSubmit={submitDonation} className="footer">
             {
                 Auth.loggedIn() ?
-                    <>
-                        <label htmlFor="donation">Help us maintain the site:</label>
+                    <div  className="d-flex justify-content-center bg-dark">
+                        <label htmlFor="donation">Help us maintain the site: </label>
                         <input name="donation" type="number" id="donation" />
                         <button type="submit">
                             Donate
                         </button>
-                    </>
+                    </div>
                     :
-                    <span>Log In To Make A Donation</span>
-            }
+                    <div className="d-flex flex-column align-items-center bg-dark">
+                        <span>Create an account and start keeping your gear safe today for free! </span>
+                        <span>We only attach strings to instruments, not our website.</span>
+                        <span>If you would like to make a voluntary donation, please log in.</span>
+                    </div>
+                                }
         </form>
     )
 }

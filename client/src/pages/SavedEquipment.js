@@ -28,10 +28,9 @@ const SavedEquipment = () => {
                             <li>Serial Number:  {item.serialNumber}</li>
                             <li>                      
                             {item.image.map((singleImage, j) => {
-                                console.log(singleImage)
                                 return (
                                     <CloudinaryContext cloudName="dgeknrish" key={j}>
-                                        <Image publicId={singleImage}>
+                                        <Image publicId={singleImage} className="equipImage">
                                            <Transformation width="200" crop="scale"/>
                                         </Image>
                                     </CloudinaryContext> 

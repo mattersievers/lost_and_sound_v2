@@ -146,7 +146,7 @@ const EditEquipment = () => {
                     {equipmentFormData.image.map((singleImage, i) => {
                       return (
                       <CloudinaryContext cloudName="dgeknrish" key={i}>
-                        <Image publicId={singleImage}>
+                        <Image publicId={singleImage} className="equipImage">
                           <Transformation width="200" crop="scale" />
                         </Image>
                       </CloudinaryContext> 
