@@ -61,11 +61,11 @@ const LostEquipment = () => {
                                                 </div>    
 
                                             )
-                                        }
+                                        } else{return null}
                                     })}
                                 </div>
                             )
-                        }
+                        } else{return null}
                         
                     })}
                 </div>    
