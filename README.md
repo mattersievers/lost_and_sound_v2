@@ -16,7 +16,7 @@
   This MERN stack website allows users to create accounts and register equipment including the ability to map their location and upload pictures. Users have the ability to report their equipment as lost, which results in it being displayed publicly on the homepage where other users may contact them.
 
   ## Install
-  Download the project files and run "npm install" to install the appropriate node packages. Using the "npm run develop" command will run both servers concurrently and produce the website at "http://localhost:3000/". Click the following link for the deployed version of the website:
+  Download the project files and run "npm install" to install the appropriate node packages. Using the "npm run develop" command will run both servers concurrently and produce the website at "http://localhost:3000/". 
   
   ## Use
   ![homepage](./client/src/assets/pics/homepage.png)   
