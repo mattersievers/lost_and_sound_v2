@@ -28,6 +28,61 @@
   margin: 2vw;
 }
 
+/* Tabling styles used throughout website */
+.blackTable{
+  background-color: rgb(33, 37, 41, 0.9);
+  text-align: center;
+  color: var(--manatee);
+  border: 5px double white;
+  border-radius: 15px;
+  margin: 1vw;
+  padding: 1vw 5vw;
+  width: 70vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.blackTable h2, h1{
+  font-size: 2.5vw;  
+  text-shadow: -2px 1px var(--dark-electric-blue);
+}
+
+.dBlueTable{
+  font-size: 2.5vw;
+  background-color: rgb(13, 31, 45, 0.3);
+  color: white;
+  border: 3px double var(--manatee) ;
+  border-radius: 15px 50px;
+  margin: 3vw;
+  width: 50vw;
+  align-items: center;
+}
+
+.dBlueTable a{
+  font-size: 1.5vw;
+  text-decoration: none;
+  color: var(--desert-sand);
+  text-shadow: 2px 2px var(--coyote-brown);
+}
+
+.dBlueTable a:hover{
+  color: white;
+}
+
+.dBlueTable a:active{
+  color: var(--desert-sand);
+  text-shadow: -1px -1px var(--coyote-brown);
+}
+
+.lBlueTable{
+  margin: 2.5vw;
+  border: 2px solid var(--manatee);
+  border-radius: 15px 50px;
+  background-color: rgba(84, 106, 123, 0.3);
+  width: 40vw;
+}
+
 /* Navbar styles */
 .websiteTitle{
   font-size: 4.5vw;
@@ -53,53 +108,6 @@
   font-size: 2vw;
 }
 
-.lostContainer{
-  background-color: rgb(33, 37, 41, 0.9);
-  text-align: center;
-  color: var(--manatee);
-  border: 5px double white;
-  border-radius: 15px;
-  margin: 1vw;
-  padding: 1vw 5vw;
-}
-
-.lostContainer h2, h1{
-  font-size: 2.5vw;  
-  text-shadow: -2px 1px var(--dark-electric-blue);
-}
-
-.lostOwnerInfo{
-  font-size: 2.5vw;
-  background-color: rgb(13, 31, 45, 0.3);
-  color: white;
-  border: 3px double var(--manatee) ;
-  border-radius: 15px 50px;
-  margin: 3vw;
-}
-
-.lostOwnerInfo a{
-  font-size: 1.5vw;
-  text-decoration: none;
-  color: var(--desert-sand);
-  text-shadow: 2px 2px var(--coyote-brown);
-}
-
-.lostOwnerInfo a:hover{
-  color: white;
-}
-
-.lostOwnerInfo a:active{
-  color: var(--desert-sand);
-  text-shadow: -1px -1px var(--coyote-brown);
-}
-
-.lostItemInfo{
-  margin: 2.5vw;
-  border: 2px solid var(--manatee);
-  border-radius: 15px 50px;
-  background-color: rgba(84, 106, 123, 0.3);
-}
-
 .lostItemList{
  padding: 1vw;
 }
@@ -116,12 +124,48 @@
 .savedEquipmentContent{
   background-image: url(./assets/pics/amp\ knobs.jpg);
 }
-/* Saved Equipment styling reuses table styling from lostContainer and lostItemInfo and list styling from lostItemList */
-
 
 /* Add Equipment Styling */
 .editEquipmentContent{
   background-image: url(./assets/pics/guitars.jpg);
+}
+
+.equipmentForm div{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  text-align: left;
+}
+
+.equipmentForm label, input, textarea, button{
+  margin: 1vw;
+}
+
+.equipmentForm label{
+  margin-left: 5vw;
+}
+
+.textInput{
+ width: 15vw;
+ min-width: 100px;
+ margin-right: 5vw;
+}
+
+.upload-button{
+  margin-right: 5vw;
+}
+
+.equipImage{
+  max-width: 35vw;
+}
+
+.equipmentForm button{
+  border-radius: 50px 15px;
+  padding: 0.5vw 1vw;
+  background-color: var(--manatee);
+  color: var(--rich-black-fogra-29);
+  font-style: italic;
 }
 /*Sign Up and Log In Modal styles*/
 .loginSignupBtn{

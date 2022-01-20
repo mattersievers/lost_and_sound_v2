@@ -22,14 +22,14 @@ const LostEquipment = () => {
                     Report and recover lost musical instruments and accessories.
                 </h2>
             </div> 
-            <div className="lostContainer card align-items-center">
+            <div className="blackTable card align-items-center">
                 <h2>Missing Equipment:</h2>
                 <div>
                     {userData.users.map((user, i) => {
                         let link = `mailto: ${user.email}`
                         if(user.hasLost) {
                             return (
-                                <div key={i} className="lostOwnerInfo card">
+                                <div key={i} className="dBlueTable card">
                                     <div className="userName">
                                         {user.firstName} {user.lastName}
                                     </div>
@@ -38,7 +38,7 @@ const LostEquipment = () => {
                                     {user.savedEquipment.map((item, j) => {                                    
                                         if (item.lost) {
                                             return(
-                                                <div key={j} className="lostItemInfo">
+                                                <div key={j} className="lBlueTable">
                                                     <ul className="lostItemList">
                                                         <li>
                                                         {item.image.map((singleImage, j) => {

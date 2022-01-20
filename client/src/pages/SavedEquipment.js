@@ -12,7 +12,7 @@ const SavedEquipment = () => {
     }
     return(
         <div className="savedEquipmentContent mainContent">
-            <div className="userEquipContainer card lostContainer">
+            <div className="userEquipContainer card blackTable">
                 <h1 className="userName">
                     {userData.me.savedEquipment.length 
                     ? `${userData.me.firstName}  ${userData.me.lastName}'s Equipment:`
@@ -21,7 +21,7 @@ const SavedEquipment = () => {
                 <div className="align-self-center">
                     {userData.me.savedEquipment.map((item, i) => {
                         return (
-                            <div className="lostItemInfo">
+                            <div className="lBlueTable">
                                 <ul key={i} className="lostItemList">
                                     <li>                      
                                     {item.image.map((singleImage, j) => {

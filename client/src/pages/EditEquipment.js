@@ -123,57 +123,83 @@ const EditEquipment = () => {
 
     return(
         <div className="editEquipmentContent mainContent">
+          <div className="blackTable">
             <h2>Register Equipment</h2>
-                <form onSubmit={handleFormSubmit}>
+                <form onSubmit={handleFormSubmit} className="d-flex flex-column align-items-left lBlueTable equipmentForm">
 
-                  <label htmlFor="category">Category: </label>
-                  <input name="category" type="category" id="category" onChange={handleInputChange}/>
-
-                  <label htmlFor="brand">Brand: </label>
-                  <input name="brand" id="brand" onChange={handleInputChange}/>
-
-                  <label htmlFor="model">Model: </label>
-                  <input name="model" id="model" onChange={handleInputChange}/>
-
-                  <label htmlFor="description">Description: </label>
-                  <input name="description" id="description" onChange={handleInputChange}/>
-
-                  <label htmlFor="serialNumber">Serial Number: </label>
-                  <input name="serialNumber" id="serialNumber" onChange={handleInputChange}/>
-
-                  <label htmlFor="image">Image: </label>
+                  <div>
+                    <label htmlFor="category">Category: </label>
+                    <input name="category" type="category" id="category" onChange={handleInputChange} className="textInput"/>
+                  </div>
                   
-                    {equipmentFormData.image.map((singleImage, i) => {
-                      return (
-                      <CloudinaryContext cloudName="dgeknrish" key={i}>
-                        <Image publicId={singleImage} className="equipImage">
-                          <Transformation width="200" crop="scale" />
-                        </Image>
-                      </CloudinaryContext> 
-                      )
-                    })}
-                  <button onClick={uploadWidget.bind(this)} className="upload-button">
-                    Upload Image
-                  </button>
+                  <div>                
+                    <label htmlFor="brand">Brand: </label>
+                    <input name="brand" id="brand" onChange={handleInputChange} className="textInput"/>
+                  </div>
 
-                  <label htmlFor="location">Location: </label>
-                  <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false} style={{height: "50vh", width:"35vw"}}>
-                      <TileLayer
-                          attribution='Open Street Maps'
-                          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                      />
-                      <LocationMarker />  
-                  </MapContainer>
+                  <div>
+                    <label htmlFor="model">Model: </label>
+                    <input name="model" id="model" onChange={handleInputChange} className="textInput"/>                
+                  </div>
+
+                  <div>
+                    <label htmlFor="description">Description: </label>
+                    <textarea name="description" id="description" onChange={handleInputChange} className="textInput"/>
+                  </div>
+                  
+                  <div>
+                    <label htmlFor="serialNumber">Serial Number: </label>
+                    <input name="serialNumber" id="serialNumber" onChange={handleInputChange} className="textInput"/>
+                  </div>
+                  
+                  <div>
+                    <label htmlFor="image">Images: </label>
+                    <button onClick={uploadWidget.bind(this)} className="upload-button">
+                      Upload Image
+                    </button>
+                  </div>
+                  <div className="d-flex flex-column align-items-center uploadPics">
+                    {equipmentFormData.image.map((singleImage, i) => {
+                        return (
+                        <CloudinaryContext cloudName="dgeknrish" key={i}>
+                          <Image publicId={singleImage} className="equipImage">
+                            <Transformation width="200" crop="scale" />
+                          </Image>
+                        </CloudinaryContext> 
+                        )
+                    })}
+                  </div>
+                  
+
+                  <label htmlFor="location"></label>
+                  <div className="align-self-center">
+                  
+                    <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false} style={{height: "20vw", width:"30vw"}}>
+                        <TileLayer
+                            attribution='Open Street Maps'
+                            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                        />
+                        <LocationMarker />  
+                    </MapContainer>
+                  </div>
                     
-                
-                  <label htmlFor="lost">Is the equipment lost? </label>
-                  <input type="radio" value={true} name="lost" onChange={handleInputChange}/> Yes
-                  <input type="radio" value={false} name="lost" onChange={handleInputChange}/> No
+                  <div className="d-flex flex-row">
+                    <label htmlFor="lost">Is the equipment lost? </label>
+                    <span className="textInput d-flex align-items-center justify-content-end">
+                      <input type="radio" value={true} name="lost" onChange={handleInputChange} className="radioInput"/> Yes
+                      <input type="radio" value={false} name="lost" onChange={handleInputChange} className="radioInput"/> No
+                    </span>
+                  </div>
                   
                   
                   {showAlert && <p>Something went wrong. Make sure the form is complete and try again.</p>}
-                  <button type="submit" >Submit</button>
+
+                  <div className="align-self-center">
+                    <button type="submit" >Submit</button>
+                  </div>
+                  
                 </form>
+              </div>     
         </div>
     );
 };
