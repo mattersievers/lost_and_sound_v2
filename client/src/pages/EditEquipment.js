@@ -42,20 +42,22 @@ const EditEquipment = () => {
             try{
               if(equipmentFormData.brand.length && equipmentFormData.category.length && equipmentFormData.model.length && equipmentFormData.description.length && equipmentFormData.serialNumber.length && equipmentFormData.image.length && equipmentFormData.location.length){
               const {data} = await saveEquipment({
-                variables: { input: {...equipmentFormData}}
+                variables: { input: {...equipmentFormData}}  
               });
               console.log(data)
+              setEquipmentFormData({category: '', brand: '', model: '', description:'', serialNumber:'', image: [], location: '', lost: false });
+              document.getElementById("category").value = '';
+              document.getElementById("brand").value = '';
+              document.getElementById("model").value = '';
+              document.getElementById("description").value = '';
+              document.getElementById("serialNumber").value = '';
+              setShowAlert(false);
             } else {setShowAlert(true); return}
             } catch (err) {
               console.error(err);
               setShowAlert(true);
             }
-            setEquipmentFormData({category: '', brand: '', model: '', description:'', serialNumber:'', image: [], location: '', lost: false });
-            document.getElementById("category").value = '';
-            document.getElementById("brand").value = '';
-            document.getElementById("model").value = '';
-            document.getElementById("description").value = '';
-            document.getElementById("serialNumber").value = '';
+            
         };
     
         // gets location of user and implements a draggable icon on the map

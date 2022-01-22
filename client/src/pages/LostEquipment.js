@@ -1,13 +1,14 @@
-import React from "react";
+import React,{useState} from "react";
 import { useQuery } from '@apollo/client';
 import { GET_EQUIPMENT } from '../utils/queries';
 import { CloudinaryContext, Transformation, Image } from 'cloudinary-react';
-
+import FilterForm from '../components/FilterForm';
 
 
 const LostEquipment = () => {
     const { loading, data: userData } = useQuery(GET_EQUIPMENT);
- 
+    const [ equipFilter, setEquipFilter] = useState({distance: 4000})
+
     if(loading) {
         return <h1> LOADING... </h1>
     }
@@ -24,6 +25,9 @@ const LostEquipment = () => {
             </div> 
             <div className="blackTable card align-items-center">
                 <h2>Missing Equipment:</h2>
+
+                <FilterForm equipFilter = {equipFilter}/>
+                
                 <div>
                     {userData.users.map((user, i) => {
                         let link = `mailto: ${user.email}`
