@@ -3,12 +3,14 @@ import { useQuery } from '@apollo/client';
 import { GET_EQUIPMENT } from '../utils/queries';
 import { CloudinaryContext, Transformation, Image } from 'cloudinary-react';
 import FilterForm from '../components/FilterForm';
+import Fade from 'react-reveal/Fade';
 
 
 const LostEquipment = () => {
     const { loading, data: userData } = useQuery(GET_EQUIPMENT);
-    const [ equipFilter, setEquipFilter] = useState({distance: 4000})
-
+    const [equipFilter, setEquipFilter] = useState({distance: 4000, category:'All'});
+    const [filterToggle, setFilterToggle] = useState(false);
+    console.log(equipFilter);
     if(loading) {
         return <h1> LOADING... </h1>
     }
@@ -25,8 +27,18 @@ const LostEquipment = () => {
             </div> 
             <div className="blackTable card align-items-center">
                 <h2>Missing Equipment:</h2>
-
-                <FilterForm equipFilter = {equipFilter}/>
+                <Fade top collapse when={filterToggle} duration={3000}>
+                    <div>
+                        <FilterForm 
+                        equipFilter = {equipFilter}
+                        setEquipFilter={setEquipFilter}/>
+                        <button onClick={()=>setFilterToggle(false)}>Collapse</button>
+                    </div>
+                </Fade>
+                <Fade bottom collapse when={!filterToggle} duration={3000}>
+                <button onClick={()=>setFilterToggle(true)}>Filters</button>
+                </Fade>
+                
                 
                 <div>
                     {userData.users.map((user, i) => {
@@ -65,11 +77,11 @@ const LostEquipment = () => {
                                                 </div>    
 
                                             )
-                                        }
+                                        } else {return null}
                                     })}
                                 </div>
                             )
-                        }
+                        } else {return null}
                         
                     })}
                 </div>    

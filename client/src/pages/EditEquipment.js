@@ -6,7 +6,7 @@ import { CloudinaryContext, Transformation, Image } from 'cloudinary-react';
 
 const EditEquipment = () => {
         // Handles form data
-        const [equipmentFormData, setEquipmentFormData] = useState({category: '', brand: '', model: '', description:'', serialNumber:'', image: [], location: '', lost: false });
+        const [equipmentFormData, setEquipmentFormData] = useState({category: 'Guitar', brand: '', model: '', description:'', serialNumber:'', image: [], location: '', lost: false });
         const [saveEquipment] = useMutation(SAVE_EQUIPMENT);
         const [showAlert, setShowAlert] = useState(false);
         const [position, setPosition] = useState(null);
@@ -103,7 +103,7 @@ const EditEquipment = () => {
             );
           };
 
-          //widget functionality
+          //photo widget functionality
           function uploadWidget() {
             let tempArray = [];
             window.cloudinary.openUploadWidget({ cloud_name: 'dgeknrish', upload_preset: 'LostAndSoundPics', tags:['musical equipment']},
@@ -131,7 +131,18 @@ const EditEquipment = () => {
 
                   <div>
                     <label htmlFor="category">Category: </label>
-                    <input name="category" type="category" id="category" onChange={handleInputChange} className="textInput"/>
+                    <select name="category" type="category" id="category" onChange={handleInputChange} className="textInput">
+                      <option value="Guitar">Guitar</option>
+                      <option value="Bass">Bass</option>
+                      <option value="Drums">Drums</option>
+                      <option value="Keyboard">Keyboard/Piano</option>
+                      <option value="Amp">Amp/Speaker</option>
+                      <option value="Pedals">Pedal/Effect/Mixer</option>
+                      <option value="Brass">Horn/Brass</option>
+                      <option value="Woodwind">Woodwind</option>
+                      <option value="Reed">Reed</option>
+                      <option value="Other">Other</option>
+                    </select>
                   </div>
                   
                   <div>                
