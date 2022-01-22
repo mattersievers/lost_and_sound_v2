@@ -89,7 +89,7 @@ const EditEquipment = () => {
           <h2>Register Equipment</h2>
               <form onSubmit={handleFormSubmit} className="d-flex flex-column align-items-left lBlueTable equipmentForm">
 
-                <div>
+                <div className="singleSelection">
                   <label htmlFor="category">Category: </label>
                   <select name="category" type="category" id="category" onChange={handleInputChange} className="textInput">
                     <option value="Guitar">Guitar</option>
@@ -105,27 +105,27 @@ const EditEquipment = () => {
                   </select>
                 </div>
                 
-                <div>                
+                <div className="singleSelection">                
                   <label htmlFor="brand">Brand: </label>
                   <input name="brand" id="brand" onChange={handleInputChange} className="textInput"/>
                 </div>
 
-                <div>
+                <div className="singleSelection">
                   <label htmlFor="model">Model: </label>
                   <input name="model" id="model" onChange={handleInputChange} className="textInput"/>                
                 </div>
 
-                <div>
+                <div className="singleSelection">
                   <label htmlFor="description">Description: </label>
                   <textarea name="description" id="description" onChange={handleInputChange} className="textInput"/>
                 </div>
                 
-                <div>
+                <div className="singleSelection">
                   <label htmlFor="serialNumber">Serial Number: </label>
                   <input name="serialNumber" id="serialNumber" onChange={handleInputChange} className="textInput"/>
                 </div>
                 
-                <div>
+                <div className="singleSelection">
                   <label htmlFor="image">Images: </label>
                   <button onClick={uploadWidget.bind(this)} className="upload-button">
                     Upload Image
@@ -145,7 +145,7 @@ const EditEquipment = () => {
                 
 
                 <label htmlFor="location"></label>
-                <div className="align-self-center">
+                <div className="align-self-center mapContainer">
                 
                   <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false} style={{height: "20vw", width:"30vw"}}>
                       <TileLayer
@@ -156,11 +156,11 @@ const EditEquipment = () => {
                       position={position}
                       setPosition={setPosition}
                       locationMarked={locationMarked}
-                      setLocationMarked={setLocationMarked}/>  
+                      setLocationMarked={setLocationMarked} />
                   </MapContainer>
                 </div>
                   
-                <div className="d-flex flex-row">
+                <div className="d-flex flex-row singleSelection">
                   <label htmlFor="lost">Is the equipment lost? </label>
                   <span className="textInput d-flex align-items-center justify-content-end">
                     <input type="radio" value={true} name="lost" onChange={handleInputChange} className="radioInput"/> Yes

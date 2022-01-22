@@ -22,6 +22,20 @@ const FilterForm = (props) => {
                     <option value="50">50 miles</option>
                     <option value="25">25 miles</option>
                 </select>
+                <label htmlFor="category">Category: </label>
+                  <select name="category" type="category" id="category" onChange={handleFormSubmission} className="textInput">
+                    <option value="All">All</option>  
+                    <option value="Guitar">Guitar</option>
+                    <option value="Bass">Bass</option>
+                    <option value="Drums">Drums</option>
+                    <option value="Keyboard">Keyboard/Piano</option>
+                    <option value="Amp">Amp/Speaker</option>
+                    <option value="Pedals">Pedal/Effect/Mixer</option>
+                    <option value="Brass">Horn/Brass</option>
+                    <option value="Woodwind">Woodwind</option>
+                    <option value="Reed">Reed</option>
+                    <option value="Other">Other</option>
+                  </select>
             </form>
         </div>    
     )

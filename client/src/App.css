@@ -130,7 +130,7 @@
   background-image: url(./assets/pics/guitars.jpg);
 }
 
-.equipmentForm div{
+.singleSelection{
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -150,6 +150,13 @@
  width: 15vw;
  min-width: 100px;
  margin-right: 5vw;
+}
+
+.mapContainer{
+  display: block;
+}
+.leafletPopup{
+text-align: center;
 }
 
 .upload-button{
