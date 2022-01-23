@@ -27,12 +27,14 @@ const LostEquipment = () => {
             if(userData && position) {
                 userData.users.forEach(currentUser => 
                     currentUser.savedEquipment.forEach(item => {
-                        let itemLatLng = item.location.split(')').join(',').split('(').join(',').split(',')
-                        let tempMile = map.distance(position,[itemLatLng[1],itemLatLng[2]])*0.000621;
-                        let userEquipIndex = currentUser.email.concat(currentUser.savedEquipment.indexOf(item))
-                        if(!lostDistances.some(el => el.userEquip === userEquipIndex)){                        
-                            setLostDistances(lostDistances=> [...lostDistances,{userEquip: userEquipIndex, userEmail: currentUser.email, miles:tempMile}])
-                        }
+                        if(item.lost) {
+                            let itemLatLng = item.location.split(')').join(',').split('(').join(',').split(',')
+                            let tempMile = map.distance(position,[itemLatLng[1],itemLatLng[2]])*0.000621;
+                            let userEquipIndex = currentUser.email.concat(currentUser.savedEquipment.indexOf(item))
+                            if(!lostDistances.some(el => el.userEquip === userEquipIndex)){                        
+                                setLostDistances(lostDistances=> [...lostDistances,{userEquip: userEquipIndex, userEmail: currentUser.email, miles:tempMile}])
+                            }
+                        }    
                     })
                 )
             }
