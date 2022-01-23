@@ -1,39 +1,50 @@
-import React,{useState, useEffect, useRef} from "react";
+import React,{useState, useRef, useEffect} from "react";
 import { useQuery } from '@apollo/client';
 import { GET_EQUIPMENT } from '../utils/queries';
 import { CloudinaryContext, Transformation, Image } from 'cloudinary-react';
 import FilterForm from '../components/FilterForm';
 import Fade from 'react-reveal/Fade';
-import { MapContainer, TileLayer, Marker, useMap } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, useMap} from 'react-leaflet';
 
 const LostEquipment = () => {
     const { loading, data: userData } = useQuery(GET_EQUIPMENT);
     const [equipFilter, setEquipFilter] = useState({distance: 4000, category:'All'});
     const [filterToggle, setFilterToggle] = useState(false);
     const [position, setPosition] = useState(null);
+    const [lostDistances, setLostDistances] = useState([]);
     useEffect(()=>{
-        console.log(equipFilter)
-    },[equipFilter])
-    
+        console.log(lostDistances)
+    },[lostDistances])
     //get location from invisible map
     function Location() {
         const markerRef = useRef(null)
-        const map = useMap();  
-        useEffect(() => {
-        map.locate().on("locationfound", function (e) {
-            setPosition(e.latlng);
-        });
-        }, [map]);
-
-        let dist1 = map.distance({lat:27.23456, lng: -97.7254358}, {lat:37.23456, lng: -97.7254358});
+        const map = useMap();
+        if(position == null){
+            map.locate().on("locationfound", function (e) {
+                setPosition(e.latlng);
+            });
+        }        
+            if(userData && position) {
+                userData.users.forEach(currentUser => 
+                    currentUser.savedEquipment.forEach(item => {
+                        let itemLatLng = item.location.split(')').join(',').split('(').join(',').split(',')
+                        let tempMile = map.distance(position,[itemLatLng[1],itemLatLng[2]])*0.000621;
+                        let userEquipIndex = currentUser.email.concat(currentUser.savedEquipment.indexOf(item))
+                        if(!lostDistances.some(el => el.userEquip === userEquipIndex)){                        
+                            setLostDistances(lostDistances=> [...lostDistances,{userEquip: userEquipIndex, userEmail: currentUser.email, miles:tempMile}])
+                        }
+                    })
+                )
+            }
+        
         return position === null ? null : (
-            <Marker position={position} ref={markerRef}>    
+            <Marker position={position} ref={markerRef}>
             </Marker>
-          );
+        );
     };
 
     //filters
-    
+
     //userData still loading
     if(loading) {
         return <h1> LOADING... </h1>
@@ -74,7 +85,8 @@ const LostEquipment = () => {
                 <div>
                     {userData.users.filter(user=>
                         user.hasLost &&
-                        user.savedEquipment.filter(equipment => equipment.category === equipFilter.category || equipFilter.category==='All').length > 0
+                        user.savedEquipment.filter(equipment => equipment.category === equipFilter.category || equipFilter.category==='All').length > 0 &&
+                        lostDistances.filter(el => el.miles< equipFilter.distance).some(el=> el.userEmail === user.email)
                     )
                     .map((user, i) => {
                         let link = `mailto: ${user.email}`
@@ -86,7 +98,9 @@ const LostEquipment = () => {
                                 <a href={link}>Contact the owner.</a>
         
                                 {user.savedEquipment
-                                .filter(item=> item.category === equipFilter.category || equipFilter.category === 'All')
+                                .filter(item => item.category === equipFilter.category || equipFilter.category === 'All' &&
+                                lostDistances.filter(el => el.miles< equipFilter.distance).some(el=> el.userEquip === user.email.concat(user.savedEquipment.indexOf(item)))
+                                )
                                 .map((item, j) => {                                    
                                     if (item.lost) {
                                         return(

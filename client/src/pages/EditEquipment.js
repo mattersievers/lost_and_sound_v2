@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from "react";
+import React, { useState} from "react";
 import { SAVE_EQUIPMENT } from '../utils/mutations';
 import { MapContainer, TileLayer} from 'react-leaflet';
 import { useMutation } from "@apollo/client";
@@ -12,10 +12,6 @@ const EditEquipment = () => {
   const [showAlert, setShowAlert] = useState(false);
   const [position, setPosition] = useState(null);
   const [locationMarked, setLocationMarked] = useState(false);
-  
-  useEffect(() => {
-    },
-    [equipmentFormData]);
   
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -74,9 +70,7 @@ const EditEquipment = () => {
             }
             //widget is closed and image array is updated
             if (result.event === "close"){
-              console.log('before ',tempArray, equipmentFormData.image)
               tempArray = tempArray.concat(equipmentFormData.image);
-              console.log('after ', tempArray)
               setEquipmentFormData({...equipmentFormData, image: tempArray})
             }
         });
