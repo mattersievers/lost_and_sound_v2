@@ -30,7 +30,7 @@ function Footer() {
         <form onSubmit={submitDonation} className="footer">
             {
                 Auth.loggedIn() ?
-                    <div  className="d-flex justify-content-center bg-dark">
+                    <div  className="d-flex justify-content-center align-items-center bg-dark">
                         <label htmlFor="donation">Help us maintain the site: </label>
                         <input name="donation" type="number" id="donation" />
                         <button type="submit">
