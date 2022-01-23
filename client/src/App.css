@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@500&display=swap');
 /* Document styles */
 :root{
 --rich-black-fogra-29: #0d1f2dff;
@@ -19,6 +19,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family: 'Heebo',sans-serif;
 }
 
 .equipImage{
@@ -26,6 +27,14 @@
   border: 1px solid var(--dark-electric-blue);
   width: 50vmin;
   margin: 2vw;
+}
+
+button{
+  border-radius: 50px 15px;
+  padding: 0.5vw 1vw;
+  background-color: var(--manatee);
+  color: var(--rich-black-fogra-29);
+  font-style: italic;
 }
 
 /* Tabling styles used throughout website */
@@ -119,7 +128,26 @@
   font-size: 1vw;
   text-shadow: 1px 1px var(--rich-black-fogra-29);
 }
+/*Homepage Filter*/
+.filterFormElement{
+  padding: 1vw;
+  background-image: linear-gradient(rgb(33, 37, 41, 0)10%,var(--manatee));
+  border-bottom: solid 1px white;
+  border-radius: 15px;
+}
 
+.filterFormElement h3{
+  text-shadow: -2px 2px var(--dark-electric-blue);
+  padding-bottom: 1vw;
+}
+
+.filterForm label, input{
+  margin: 1vw;
+}
+.filterForm label{
+  color: white;
+  text-shadow: -1px 1px var(--rich-black-fogra-29);
+}
 /* Saved Equipment Styling */
 .savedEquipmentContent{
   background-image: url(./assets/pics/amp\ knobs.jpg);
@@ -167,13 +195,6 @@ text-align: center;
   max-width: 35vw;
 }
 
-.equipmentForm button{
-  border-radius: 50px 15px;
-  padding: 0.5vw 1vw;
-  background-color: var(--manatee);
-  color: var(--rich-black-fogra-29);
-  font-style: italic;
-}
 /*Sign Up and Log In Modal styles*/
 .loginSignupBtn{
   margin: 10px 0;

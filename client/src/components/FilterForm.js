@@ -4,15 +4,14 @@ const FilterForm = (props) => {
     
     const handleFormSubmission = (event) => {
         event.preventDefault();
-        console.log(event.target)
         const { name, value } = event.target;
         props.setEquipFilter({...props.equipFilter, [name]:value});
     }
 
     return(
         <div className="filterFormElement">
-            <h3>Filter by</h3>
-            <form className="filterForm" onSubmit={handleFormSubmission}>
+            <h3>Filter By:</h3>
+            <form className="filterForm  d-flex flex-wrap align-items-center" onSubmit={handleFormSubmission}>
                 <label htmlFor="distance">Distance: </label>
                 <select value={props.equipFilter.distance} name="distance" onChange={handleFormSubmission}>
                     <option value="4000">Any</option>

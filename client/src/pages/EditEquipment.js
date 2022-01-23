@@ -16,7 +16,6 @@ const EditEquipment = () => {
   useEffect(() => {
     },
     [equipmentFormData]);
-    console.log(equipmentFormData);
   
   const handleInputChange = (event) => {
     const { name, value } = event.target;
