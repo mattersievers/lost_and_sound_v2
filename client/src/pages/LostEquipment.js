@@ -85,7 +85,7 @@ const LostEquipment = () => {
                 <div>
                     {userData.users.filter(user=>
                         user.hasLost &&
-                        user.savedEquipment.filter(equipment => equipment.category === equipFilter.category || equipFilter.category==='All').length > 0 &&
+                        (user.savedEquipment.filter(equipment => equipment.category === equipFilter.category && equipment.lost|| equipFilter.category==='All').length > 0) &&
                         lostDistances.filter(el => el.miles< equipFilter.distance).some(el=> el.userEmail === user.email)
                     )
                     .map((user, i) => {
@@ -98,8 +98,9 @@ const LostEquipment = () => {
                                 <a href={link}>Contact the owner.</a>
         
                                 {user.savedEquipment
-                                .filter(item => item.category === equipFilter.category || equipFilter.category === 'All' &&
-                                lostDistances.filter(el => el.miles< equipFilter.distance).some(el=> el.userEquip === user.email.concat(user.savedEquipment.indexOf(item)))
+                                .filter( item => 
+                                    (item.category === equipFilter.category || equipFilter.category === 'All') &&
+                                    lostDistances.filter(el => el.miles< equipFilter.distance).some(el=> el.userEquip === user.email.concat(user.savedEquipment.indexOf(item)))
                                 )
                                 .map((item, j) => {                                    
                                     if (item.lost) {
