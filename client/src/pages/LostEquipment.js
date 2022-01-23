@@ -85,7 +85,7 @@ const LostEquipment = () => {
                 <div>
                     {userData.users.filter(user=>
                         user.hasLost &&
-                        (user.savedEquipment.filter(equipment => equipment.category === equipFilter.category && equipment.lost|| equipFilter.category==='All').length > 0) &&
+                        (user.savedEquipment.filter(equipment => (equipment.lost && equipment.category === equipFilter.category) || (equipment.lost && equipFilter.category==='All')).length > 0) &&
                         lostDistances.filter(el => el.miles< equipFilter.distance).some(el=> el.userEmail === user.email)
                     )
                     .map((user, i) => {

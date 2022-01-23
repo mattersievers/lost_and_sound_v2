@@ -11,7 +11,7 @@ const FilterForm = (props) => {
     return(
         <div className="filterFormElement">
             <h3>Filter By:</h3>
-            <form className="filterForm  d-flex flex-wrap align-items-center" onSubmit={handleFormSubmission}>
+            <form className="filterForm  d-flex flex-wrap align-items-center justify-content-evenly" onSubmit={handleFormSubmission}>
                 <label htmlFor="distance">Distance: </label>
                 <select value={props.equipFilter.distance} name="distance" onChange={handleFormSubmission}>
                     <option value="4000">Any</option>
@@ -22,7 +22,7 @@ const FilterForm = (props) => {
                     <option value="25">25 miles</option>
                 </select>
                 <label htmlFor="category">Category: </label>
-                  <select name="category" type="category" id="category" onChange={handleFormSubmission} className="textInput">
+                  <select name="category" type="category" id="category" onChange={handleFormSubmission} >
                     <option value="All">All</option>  
                     <option value="Guitar">Guitar</option>
                     <option value="Bass">Bass</option>

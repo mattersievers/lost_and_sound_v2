@@ -131,9 +131,8 @@ button{
 /*Homepage Filter*/
 .filterFormElement{
   padding: 1vw;
-  background-image: linear-gradient(rgb(33, 37, 41, 0)10%,var(--manatee));
-  border-bottom: solid 1px white;
-  border-radius: 15px;
+  
+ 
 }
 
 .filterFormElement h3{
@@ -141,12 +140,22 @@ button{
   padding-bottom: 1vw;
 }
 
-.filterForm label, input{
+.filterForm{
+  background-image: linear-gradient(rgb(33, 37, 41, 0),var(--manatee)90%);
+  border-bottom: solid 1px white;
+  border-radius: 15px;
+}
+
+.filterForm label, select{
   margin: 1vw;
+}
+.filterForm select{
+  margin-left: 0.5vw;
 }
 .filterForm label{
   color: white;
   text-shadow: -1px 1px var(--rich-black-fogra-29);
+  margin-right: 0;
 }
 /* Saved Equipment Styling */
 .savedEquipmentContent{
