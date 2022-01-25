@@ -14,7 +14,7 @@ const FilterForm = (props) => {
             <form className="filterForm  d-flex flex-wrap align-items-center justify-content-evenly" onSubmit={handleFormSubmission}>
                 <label htmlFor="distance">Distance: </label>
                 <select value={props.equipFilter.distance} name="distance" onChange={handleFormSubmission}>
-                    <option value="4000">Any</option>
+                    <option value="13000">Any</option>
                     <option value="300">300 miles</option>
                     <option value="200">200 miles</option>
                     <option value="100">100 miles</option>

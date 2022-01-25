@@ -1,50 +1,23 @@
-import React,{useState, useRef, useEffect} from "react";
+import React,{useState, useEffect} from "react";
 import { useQuery } from '@apollo/client';
 import { GET_EQUIPMENT } from '../utils/queries';
 import { CloudinaryContext, Transformation, Image } from 'cloudinary-react';
 import FilterForm from '../components/FilterForm';
 import Fade from 'react-reveal/Fade';
-import { MapContainer, TileLayer, Marker, useMap} from 'react-leaflet';
+import { MapContainer, TileLayer} from 'react-leaflet';
+import Location from "../components/Location";
 
 const LostEquipment = () => {
     const { loading, data: userData } = useQuery(GET_EQUIPMENT);
-    const [equipFilter, setEquipFilter] = useState({distance: 4000, category:'All'});
+    const [equipFilter, setEquipFilter] = useState({distance: 13000, category:'All'});
     const [filterToggle, setFilterToggle] = useState(false);
     const [position, setPosition] = useState(null);
     const [lostDistances, setLostDistances] = useState([]);
+
     useEffect(()=>{
-        console.log(lostDistances)
-    },[lostDistances])
-    //get location from invisible map
-    function Location() {
-        const markerRef = useRef(null)
-        const map = useMap();
-        if(position == null){
-            map.locate().on("locationfound", function (e) {
-                setPosition(e.latlng);
-            });
-        }        
-            if(userData && position) {
-                userData.users.forEach(currentUser => 
-                    currentUser.savedEquipment.forEach(item => {
-                        let itemLatLng = item.location.split(')').join(',').split('(').join(',').split(',')
-                        let tempMile = map.distance(position,[itemLatLng[1],itemLatLng[2]])*0.000621;
-                        let userEquipIndex = currentUser.email.concat(currentUser.savedEquipment.indexOf(item))
-                        if(!lostDistances.some(el => el.userEquip === userEquipIndex)){                        
-                            setLostDistances(lostDistances=> [...lostDistances,{userEquip: userEquipIndex, userEmail: currentUser.email, miles:tempMile}])
-                        }
-                    })
-                )
-            }
         
-        return position === null ? null : (
-            <Marker position={position} ref={markerRef}>
-            </Marker>
-        );
-    };
-
-    //filters
-
+    },[lostDistances])
+    
     //userData still loading
     if(loading) {
         return <h1> LOADING... </h1>
@@ -78,7 +51,13 @@ const LostEquipment = () => {
                             attribution='Open Street Maps'
                             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                         />
-                        <Location/>  
+                        <Location 
+                        position={position}
+                        setPosition={setPosition}
+                        userData = {userData}
+                        lostDistances = {lostDistances}
+                        setLostDistances = {setLostDistances}
+                        />  
                 </MapContainer>
 
 
@@ -108,9 +87,9 @@ const LostEquipment = () => {
                                             <div key={j} className="lBlueTable">
                                                 <ul className="lostItemList">
                                                     <li>
-                                                    {item.image.map((singleImage, j) => {
+                                                    {item.image.map((singleImage, k) => {
                                                         return (
-                                                            <CloudinaryContext cloudName="dgeknrish" key={j}>
+                                                            <CloudinaryContext cloudName="dgeknrish" key={k}>
                                                                 <Image publicId={singleImage}  className="equipImage">
                                                                 <Transformation crop="scale" />
                                                                 </Image>
