@@ -199,8 +199,8 @@ const EditEquipment = (props) => {
               <div className="d-flex flex-row singleSelection">
                 <label htmlFor="lost">Is the equipment lost? </label>
                 <span className="textInput d-flex align-items-center justify-content-end">
-                  <input type="radio" value={true} name="lost" onChange={handleInputChange} id="radioButton1" className="radioInput" checked={currentInstrument[0].lost}/> Yes
-                  <input type="radio" value={false} name="lost" onChange={handleInputChange} id="radioButton2" className="radioInput" checked={!currentInstrument[0].lost}/> No
+                  <input type="radio" value={true} name="lost" onChange={handleInputChange} id="radioButton1" className="radioInput" checked={equipmentFormData.lost}/> Yes
+                  <input type="radio" value={false} name="lost" onChange={handleInputChange} id="radioButton2" className="radioInput" checked={!equipmentFormData.lost}/> No
                 </span>
               </div>
               
