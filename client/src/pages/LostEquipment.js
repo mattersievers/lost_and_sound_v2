@@ -87,7 +87,7 @@ const LostEquipment = () => {
                                 {user.savedEquipment
                                 .filter( item => 
                                     (item.category === equipFilter.category || equipFilter.category === 'All') &&
-                                    lostDistances.filter(el => el.miles< equipFilter.distance).some(el=> el.userEquip === user.email.concat(user.savedEquipment.indexOf(item)))
+                                    lostDistances.some(el=> el.miles< equipFilter.distance && el.userEquip === user.email.concat(user.savedEquipment.indexOf(item)))
                                 )
                                 .map((item, j) => {                                    
                                     if (item.lost) {
