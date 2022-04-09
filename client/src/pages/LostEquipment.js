@@ -63,11 +63,17 @@ const LostEquipment = () => {
 
 
                 <div>
+                    {/* sorts through users to find users with equipment that matches the filter queries */}
                     {userData.users.filter(user=>
                         user.hasLost &&
-                        (user.savedEquipment.filter(equipment => (equipment.lost && equipment.category === equipFilter.category) || (equipment.lost && equipFilter.category==='All')).length > 0) &&
-                        lostDistances.filter(el => el.miles< equipFilter.distance).some(el=> el.userEmail === user.email)
-                    )
+                        (user.savedEquipment.some(equipment => 
+                            equipment.lost && 
+                            ((equipment.category === equipFilter.category) || (equipFilter.category==='All')) &&
+                            lostDistances.some(el => 
+                                el.miles < equipFilter.distance &&
+                                el.userEquip === user.email.concat(user.savedEquipment.indexOf(equipment))
+                            )
+                        )))
                     .map((user, i) => {
                         let link = `mailto: ${user.email}`
 
