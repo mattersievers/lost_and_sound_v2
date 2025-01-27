@@ -1,0 +1,222 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@500&display=swap');
+/* Document styles */
+:root{
+--rich-black-fogra-29: #0d1f2dff;
+--dark-electric-blue: #546a7bff;
+--manatee: #9ea3b0ff;
+--coyote-brown: #7f6041ff;
+--desert-sand: #e4c3adff;
+}
+
+.mainContent{
+  min-height: 100vh;
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Heebo',sans-serif;
+}
+
+.equipImage{
+  border-radius: 15px;
+  border: 1px solid var(--dark-electric-blue);
+  width: 25vw;
+  margin: 2vw;
+}
+
+button{
+  border-radius: 50px 15px;
+  padding: 0.5vw 1vw;
+  background-color: var(--manatee);
+  color: var(--rich-black-fogra-29);
+  font-style: italic;
+}
+
+/* Tabling styles used throughout website */
+.blackTable{
+  background-color: rgb(33, 37, 41, 0.9);
+  text-align: center;
+  color: var(--manatee);
+  border: 5px double white;
+  border-radius: 15px;
+  margin: 1vw;
+  padding: 1vw 5vw;
+  width: 70vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.blackTable h2, h1{
+  font-size: 2.5vw;  
+  text-shadow: -2px 1px var(--dark-electric-blue);
+}
+
+.dBlueTable{
+  font-size: 2.5vw;
+  background-color: rgb(13, 31, 45, 0.3);
+  color: white;
+  border: 3px double var(--manatee) ;
+  border-radius: 15px 50px;
+  margin: 3vw;
+  width: 50vw;
+  align-items: center;
+}
+
+.dBlueTable a{
+  font-size: 1.5vw;
+  text-decoration: none;
+  color: var(--desert-sand);
+  text-shadow: 2px 2px var(--coyote-brown);
+}
+
+.dBlueTable a:hover{
+  color: white;
+}
+
+.dBlueTable a:active{
+  color: var(--desert-sand);
+  text-shadow: -1px -1px var(--coyote-brown);
+}
+
+.lBlueTable{
+  margin: 2.5vw;
+  border: 2px solid var(--manatee);
+  border-radius: 15px 50px;
+  background-color: rgba(84, 106, 123, 0.3);
+  width: 40vw;
+}
+
+/* Navbar styles */
+.websiteTitle{
+  font-size: 4.5vw;
+  font-family: 'Lobster', cursive;
+}
+
+/* Homepage Styles */
+.lostEquipmentContent{
+  background-image: url(./assets/pics/microphone.jpg);
+}
+
+.welcomeText{
+  color: var(--desert-sand);
+  text-shadow: 2px 2px var(--coyote-brown);
+  text-align: center;
+}
+
+.welcomeText h1{
+  font-size: 3vw;
+}
+
+.welcomeText h2{
+  font-size: 2vw;
+}
+
+.lostItemList{
+ padding: 1vw;
+}
+
+.lostItemList li{
+  color: var(--manatee);
+  margin: 1vw;
+  list-style: none;
+  font-size: 1vw;
+  text-shadow: 1px 1px var(--rich-black-fogra-29);
+}
+/*Homepage Filter*/
+.filterFormElement{
+  padding: 1vw;
+  
+ 
+}
+
+.filterFormElement h3{
+  text-shadow: -2px 2px var(--dark-electric-blue);
+  padding-bottom: 1vw;
+}
+
+.filterForm{
+  background-image: linear-gradient(rgb(33, 37, 41, 0),var(--manatee)90%);
+  border-bottom: solid 1px white;
+  border-radius: 15px;
+}
+
+.filterForm label, select{
+  margin: 1vw;
+}
+.filterForm select{
+  margin-left: 0.5vw;
+}
+.filterForm label{
+  color: white;
+  text-shadow: -1px 1px var(--rich-black-fogra-29);
+  margin-right: 0;
+}
+/* Saved Equipment Styling */
+.savedEquipmentContent{
+  background-image: url(./assets/pics/amp\ knobs.jpg);
+}
+
+/* Add Equipment Styling */
+.editEquipmentContent{
+  background-image: url(./assets/pics/guitars.jpg);
+}
+
+.singleSelection{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  text-align: left;
+}
+
+.equipmentForm label, input, textarea, button{
+  margin: 1vw;
+}
+
+.equipmentForm label{
+  margin-left: 5vw;
+}
+
+.textInput{
+ width: 15vw;
+ min-width: 100px;
+ margin-right: 5vw;
+}
+
+.mapContainer{
+  display: block;
+}
+.leafletPopup{
+text-align: center;
+}
+
+.upload-button{
+  margin-right: 5vw;
+}
+
+.equipImage{
+  max-width: 35vw;
+}
+
+/*Sign Up and Log In Modal styles*/
+.loginSignupBtn{
+  margin: 10px 0;
+}
+
+/* Footer Styles */
+
+.footer{
+  align-items: center;
+  color: var(--manatee);
+  font-size: 1vw;
+}
+
+.footer input{
+  margin: 0 1vw;
+}
