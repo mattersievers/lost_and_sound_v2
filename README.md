@@ -21,7 +21,7 @@
   ## Use
   ![homepage](./client/src/assets/pics/homepage.png)   
 
-  Deployed site: [Lost and Sound](https://lost-and-sound.herokuapp.com/)
+  Deployed site: [Lost and Sound](https://lost-and-sound-647dba9e03a2.herokuapp.com/)
   
   ## License
   Licensed under MIT License
